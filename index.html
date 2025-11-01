@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statik Sosyal Ağ Mockup</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">AppCloud</div>
+        <nav>
+            <a href="#">Anasayfa</a>
+            <a href="#">Profil</a>
+            <a href="#">Ayarlar</a>
+            <a href="#" id="logout-btn">Çıkış Yap (Statik)</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="new-post-area">
+            <h2>Ne düşünüyorsun?</h2>
+            <textarea id="post-input" placeholder="Yeni gönderi yaz..."></textarea>
+            <button id="submit-post-btn">Gönder (Veri Kaydedilmeyecek)</button>
+        </section>
+
+        <hr>
+
+        <section id="post-feed" class="post-feed">
+            <h2>Gönderi Akışı</h2>
+            <p id="loading-msg">Gönderiler yükleniyor...</p>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
