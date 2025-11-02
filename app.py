@@ -17,7 +17,7 @@ from sqlalchemy import or_
 # -------------------- FLASK APP (route'lardan ÖNCE!) --------------------
 # Yeni: template_folder ve static_folder ayarları standart kullanıma ayarlandı
  from flask_socketio import SocketIO
-socketio = SocketIO(app, async_mode="gevent", cors_allowed_origins="*")
+socketio = SocketIO(app, async_mode="threading", cors_allowed_origins="*")
 
 # YENİ: SQLite veritabanı yapılandırması
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
