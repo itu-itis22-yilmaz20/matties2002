@@ -1,4 +1,5 @@
 # app.py — Flask mini sosyal ağ (Py3.9 uyumlu)
+import os
 from flask_socketio import SocketIO
 from typing import Optional
 from flask import (
