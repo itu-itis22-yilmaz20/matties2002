@@ -1,5 +1,6 @@
 # app.py — Flask mini sosyal ağ (Py3.9 uyumlu)
-import os, uuid
+from flask_socketio import SocketIO
+socketio = SocketIO(app, async_mode="eventlet") import os, uuid
 from typing import Optional
 from flask import (
     Flask, request, jsonify, render_template, # DEĞİŞTİ: render_template_string yerine render_template
