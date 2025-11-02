@@ -16,8 +16,9 @@ from sqlalchemy import or_
 
 # -------------------- FLASK APP (route'lardan ÖNCE!) --------------------
 # Yeni: template_folder ve static_folder ayarları standart kullanıma ayarlandı
-app = Flask(__name__) 
-app.secret_key = os.environ.get("APP_SECRET", "DEGISTIR_ILK_CALISTIRMADA")
+ 
+app = Flask(__name__)
+socketio = SocketIO(app, async_mode="eventlet") app.secret_key = os.environ.get("APP_SECRET", "DEGISTIR_ILK_CALISTIRMADA")
 
 # YENİ: SQLite veritabanı yapılandırması
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
@@ -226,17 +227,7 @@ def index():
         req_recv_of_current = {get_username_by_id(f.user_id) for f in recv_q}
 
     # DEĞİŞTİ: render_template_string yerine render_template kullanıldı
-    return render_template(
-        "index.html", # Yeni şablon dosyası
-        posts=visible_posts,
-        LIVE_STREAMS=LIVE_STREAMS,
-        current_user=current_user,
-        friends_of_current=friends_of_current,
-        req_sent_of_current=req_sent_of_current,
-        req_recv_of_current=req_recv_of_current,
-    )
-
-
+return render_template("index.html") if os.path.exists("templates/index.html") else "Hello!"
 # -------------------- KAYIT & GİRİŞ --------------------
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -764,10 +755,9 @@ def api_comments(post_id):
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
-    socketio.run(app, host="0.0.0.0", port=port)
-
+    socketio.run(app, host="0.0.0.0", port=port, debug=False)
     with app.app_context():
         db.create_all()
 
     print(f"Çalışıyor: http://0.0.0.0:{port}")
-    socketio.run(app, host="0.0.0.0", port=port, debug=False, allow_unsafe_werkzeug=True)
+  
