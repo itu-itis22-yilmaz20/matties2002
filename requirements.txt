@@ -1,6 +1,4 @@
-Flask
-Flask-SocketIO
-Flask-SQLAlchemy
-gunicorn
-python-dotenv
-eventlet
+Flask==3.0.0
+flask-socketio==5.3.6
+eventlet==0.33.3
+gunicorn==21.2.0
